@@ -2,11 +2,11 @@ import { LoginElements } from "./login.elements";
 
 export class LoginMethods {
   static insertUsername(username) {
-    LoginElements.username.type(username);
+    LoginElements.username.invoke('val', username);
   }
 
   static insertPassword(password) {
-    LoginElements.password.type(password);
+    LoginElements.password.invoke('val', password);
   }
 
   static clickOnLoginButton() {

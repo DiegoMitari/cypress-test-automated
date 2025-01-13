@@ -1,4 +1,5 @@
-import { LoginMethods } from "../pages/login.methods";
+import { LoginMethods } from "../pages/login/login.methods";
+import { HomeMethods } from "../pages/home/home.methods";
 
 describe("Navegando en demoblaze.com", () => {
   it("Deberia navegar a la pagina de demoblaze", () => {
