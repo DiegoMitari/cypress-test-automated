@@ -8,7 +8,7 @@ export class CommonPageElements {
   }
 
   static get option_about_us() {
-    return cy.contains('a', 'About Us');
+    return cy.contains('a', 'About us');
   }
 
   static get option_cart() {
@@ -16,10 +16,10 @@ export class CommonPageElements {
   }
 
   static get option_login() {
-    return cy.contains('a', 'Log In')
+    return cy.contains('a', 'Log in')
   }
 
   static get option_signup() {
-    return cy.contains('a', 'Sign Up')
+    return cy.contains('a', 'Sign up')
   }
 }
