@@ -1,4 +1,5 @@
 import { Logger } from "../../utils/logger";
+import { CommonPageMethods } from "../common-page/common-page.methods";
 import { LoginElements } from "./login.elements";
 
 export class LoginMethods {
@@ -23,5 +24,10 @@ export class LoginMethods {
     this.insertPassword(password);
     Logger.subStep('Click on Login Button');
     this.clickOnLoginButton();
+  }
+
+  //verifica que haya un alert que diga que la contraseña es incorrecta
+  static verifyWrongPasswordMessage() {
+    CommonPageMethods.verifyAlert("Wrong password.");
   }
 }
