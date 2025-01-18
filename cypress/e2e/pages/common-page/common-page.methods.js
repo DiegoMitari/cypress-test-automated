@@ -1,3 +1,4 @@
+import { LoginData } from "../login/login.data";
 import { CommonPageData } from "./common-page.data";
 import { CommonPageElements } from "./common-page.elements";
 
@@ -48,5 +49,10 @@ export class CommonPageMethods {
       counter += 1;
     }
     return result;
+  }
+
+  //verificamos que el usuario se haya logueado bien
+  static verifySignedUser(username) {
+    CommonPageElements.signedUser.should('have.text', `Welcome ${username}`);
   }
 }

@@ -22,4 +22,8 @@ export class CommonPageElements {
   static get option_signup() {
     return cy.contains('a', 'Sign up')
   }
+
+  static get signedUser() {
+    return cy.get('a#nameofuser');
+  }
 }
