@@ -2,18 +2,23 @@ import { HomeElements } from "./home.elements"
 
 export class HomeMethods {
   static clickOnPhonesOption() {
-    return HomeElements.categories_phones.click();
+    HomeElements.categories_phones.click();
   }
 
   static clickOnLaptopsOption() {
-    return HomeElements.categories_laptops.click();
+    HomeElements.categories_laptops.click();
   }
 
   static clickOnMonitorsOption() {
-    return HomeElements.categories_monitors.click();
+    HomeElements.categories_monitors.click();
   }
 
   static clickOnProductLink(productName) {
-    return HomeElements.product(productName).click();
+    HomeElements.product(productName).click();
+  }
+
+  //Verifica que un producto con nombre productName sea visible
+  static verifyProductDisplayed(productName) {
+    HomeElements.product(productName).should('be.visible');
   }
 }
