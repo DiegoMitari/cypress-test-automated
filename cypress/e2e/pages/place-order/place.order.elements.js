@@ -12,7 +12,7 @@ export class PlaceOrderElements {
   }
 
   static get textbox_credit_card() {
-    return cy.get("cy.get('input#name')");
+    return cy.get('input#card');
   }
 
   static get textbox_month() {
@@ -28,6 +28,6 @@ export class PlaceOrderElements {
   }
 
   static get button_purchase() {
-    return cy.get("button[text()='Purchase']");
+    return cy.contains('button', 'Purchase');
   }
 }

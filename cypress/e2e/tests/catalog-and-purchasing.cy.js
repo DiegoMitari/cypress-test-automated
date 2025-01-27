@@ -5,7 +5,10 @@ import { HomeMethods } from "../pages/home/home.methods";
 import { LoginData } from "../pages/login/login.data";
 import { LoginMethods } from "../pages/login/login.methods";
 import { ProductDetailsMethods } from "../pages/product-details/product-details.methods";
+import { PlaceOrderData } from "../pages/place-order/place-order.data";
 import { Logger } from "../utils/logger";
+import { PlaceOrderMethods } from "../pages/place-order/place-order.methods";
+import { ThanksForYourPurcharseMethods } from "../pages/thanks-for-you-purcharse/thanks-for-you-purcharse.methods";
 
 const user = LoginData.validCredentials;
 
@@ -60,5 +63,62 @@ describe(CommonPageData.testSuites.catalogoYCompra, () => {
     CartMethods.verifyProductAdded('Apple monitor 24');
 
     cy.wait(10000);
+  });
+
+  it('Realizar una compra', () => {
+    Logger.stepNumber(1);
+    CommonPageMethods.navigateToDemoBlaze();
+    CommonPageMethods.clickOnLoginOption();
+    LoginMethods.login(user.username, user.password);
+
+    Logger.stepNumber(2);
+    CommonPageMethods.clickOnHometOption();
+
+    Logger.stepNumber(3);
+    HomeMethods.clickOnMonitorsOption();
+    HomeMethods.verifyProductDisplayed('Apple monitor 24');
+    HomeMethods.clickOnProductLink('Apple monitor 24');
+    cy.wait(5000);
+    Logger.stepNumber(4);
+    Logger.stepDescription('Verificar que se muestra la página de detalles del producto');
+    ProductDetailsMethods.verifyButtonAddToCartDisplayed();
+    cy.wait(5000);
+    Logger.stepNumber(5);
+    Logger.stepDescription('Hacer Click en el botón Add to Cart');
+    ProductDetailsMethods.clickOnAddToCartButton();
+    cy.wait(5000);
+    Logger.stepNumber(6);
+    Logger.stepDescription('Verificar que se muestra el mensaje de confirmación de agregado al carrito');
+    ProductDetailsMethods.verifyProductAddedMessage();
+    CommonPageMethods.clickOnCartOption();
+    CartMethods.verifyProductAdded('Apple monitor 24');
+    cy.wait(5000);
+
+    Logger.stepNumber(7);
+    Logger.stepDescription('Verificar que estamos dentro de la página del carrito');
+    CartMethods.verifyCartPageVisibled();
+    cy.wait(5000);
+
+    Logger.stepNumber(8);
+    Logger.stepDescription('Hacer Click en el botón Place Order');
+    CartMethods.ClickOnPlaceOrderButton();
+    cy.wait(5000);
+
+    Logger.stepNumber(9);
+    Logger.stepDescription('Completar los campos obligatorios del modal de información de envio');
+    PlaceOrderMethods.insertOrderInformation(PlaceOrderData.testData);
+    cy.wait(5000);
+
+    Logger.stepNumber(10);
+    Logger.stepDescription('Hacer click en el botón Purchase');
+    PlaceOrderMethods.clickOnPurchaseButton();
+    cy.wait(5000);
+
+    Logger.stepNumber(11);
+    Logger.stepDescription('Verificar que se muestra un mensaje de confirmación y se redirige a la página de inicio');
+    ThanksForYourPurcharseMethods.verifyCheckMarkIsDisplayed();
+    ThanksForYourPurcharseMethods.clickOnOkButton();
+    HomeMethods.verifyIndexURL();
+    cy.wait(5000);
   })
 })
