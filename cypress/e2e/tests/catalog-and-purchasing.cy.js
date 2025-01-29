@@ -13,6 +13,12 @@ import { ThanksForYourPurcharseMethods } from "../pages/thanks-for-you-purcharse
 const user = LoginData.validCredentials;
 
 describe(CommonPageData.testSuites.catalogoYCompra, () => {
+
+  beforeEach(() => {
+    cy.clearCookies(); // Limpia las cookies
+    cy.clearLocalStorage(); // Limpia el almacenamiento local
+  });
+
   it('Navegación por categorías', () => {
     Logger.stepNumber(1);
     Logger.stepDescription('Iniciar sesión como un usuario registrado');
