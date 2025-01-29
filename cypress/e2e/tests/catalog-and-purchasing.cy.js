@@ -37,7 +37,6 @@ describe(CommonPageData.testSuites.catalogoYCompra, () => {
     HomeMethods.clickOnMonitorsOption();
     Logger.verification('Verificar que se muestra la lista de productos correspondiente a la categoría seleccionada');
     HomeMethods.verifyProductDisplayed('Apple monitor 24');
-    //HomeMethods.verifyProductDisplayed('ASUS Full HD');
   });
 
   it('Agregar productos al carrito', () => {
@@ -68,7 +67,11 @@ describe(CommonPageData.testSuites.catalogoYCompra, () => {
     CommonPageMethods.clickOnCartOption();
     CartMethods.verifyProductAdded('Apple monitor 24');
 
-    cy.wait(10000);
+    cy.wait(5000);
+    Logger.stepNumber(7);
+    Logger.stepDescription('Vaciamos los articulos del carrito');
+    CartMethods.emptyCart();
+
   });
 
   it('Realizar una compra', () => {

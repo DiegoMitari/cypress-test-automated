@@ -16,4 +16,11 @@ export class CartMethods {
   static verifyCartPageVisibled() {
     cy.contains('h2', 'Products').should('be.visible');
   }
+
+  static emptyCart() {
+    cy.get('a[onclick^="deleteItem"]').each($delete => {
+      $delete.click();
+      cy.wait(5000);
+    });
+  }
 }

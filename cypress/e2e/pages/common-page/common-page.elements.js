@@ -15,6 +15,10 @@ export class CommonPageElements {
     return cy.contains('a', 'Cart')
   }
 
+  static get option_Logout() {
+    return cy.get('#logout2');
+  }
+
   static get option_login() {
     return cy.contains('a', 'Log in')
   }

@@ -29,4 +29,9 @@ export class Logger {
     cy.allure().step(text);
     //cy.log(text);
   }
+
+  static postCondition(description) {
+    const text = `POSTCONDITION - ${description}`;
+    cy.allure().step(text);
+  }
 }

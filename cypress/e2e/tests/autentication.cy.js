@@ -5,6 +5,12 @@ import { LoginMethods } from '../pages/login/login.methods';
 import { Logger } from '../utils/logger';
 
 describe(CommonPageData.testSuites.autenticacion, () => {
+
+  beforeEach(() => {
+    cy.clearCookies(); // Limpia las cookies
+    cy.clearLocalStorage(); // Limpia el almacenamiento local
+  });
+
   it('Inicio de sesión válido', () => {
     Logger.stepNumber(1);
     Logger.stepDescription('Navegar a la página de inicio');
@@ -24,6 +30,11 @@ describe(CommonPageData.testSuites.autenticacion, () => {
     LoginMethods.clickOnLoginButton();
     Logger.verification('Verificar que se redirige al usuario a la página de inicio.');
     CommonPageMethods.verifySignedUser(LoginData.validCredentials.username);
+
+    Logger.postCondition('Log Out');
+    CommonPageMethods.clickOnLogOut();
+    cy.wait(10000);
+
   });
 
   it('Inicio de sesión inválido', () => {

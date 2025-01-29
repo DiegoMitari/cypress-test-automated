@@ -27,6 +27,15 @@ export class CommonPageMethods {
     CommonPageElements.option_login.click();
   }
 
+  static clickOnLogOut() {
+    //Primero verificamos que este logueado un usuario
+    cy.get('body').then($body => {
+      if ($body.find('#logout2').length > 0) {
+        CommonPageElements.option_Logout.click();
+      }
+    })
+  }
+
   static clickOnSingUpOption() {
     CommonPageElements.option_signup.click();
   }
