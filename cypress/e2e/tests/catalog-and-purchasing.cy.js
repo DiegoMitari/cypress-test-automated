@@ -67,7 +67,6 @@ describe(CommonPageData.testSuites.catalogoYCompra, () => {
     CommonPageMethods.clickOnCartOption();
     CartMethods.verifyProductAdded('Apple monitor 24');
 
-    cy.wait(5000);
     Logger.stepNumber(7);
     Logger.stepDescription('Vaciamos los articulos del carrito');
     CartMethods.emptyCart();
@@ -87,47 +86,41 @@ describe(CommonPageData.testSuites.catalogoYCompra, () => {
     HomeMethods.clickOnMonitorsOption();
     HomeMethods.verifyProductDisplayed('Apple monitor 24');
     HomeMethods.clickOnProductLink('Apple monitor 24');
-    cy.wait(5000);
+
     Logger.stepNumber(4);
     Logger.stepDescription('Verificar que se muestra la página de detalles del producto');
     ProductDetailsMethods.verifyButtonAddToCartDisplayed();
-    cy.wait(5000);
+
     Logger.stepNumber(5);
     Logger.stepDescription('Hacer Click en el botón Add to Cart');
     ProductDetailsMethods.clickOnAddToCartButton();
-    cy.wait(5000);
+
     Logger.stepNumber(6);
     Logger.stepDescription('Verificar que se muestra el mensaje de confirmación de agregado al carrito');
     ProductDetailsMethods.verifyProductAddedMessage();
     CommonPageMethods.clickOnCartOption();
     CartMethods.verifyProductAdded('Apple monitor 24');
-    cy.wait(5000);
 
     Logger.stepNumber(7);
     Logger.stepDescription('Verificar que estamos dentro de la página del carrito');
     CartMethods.verifyCartPageVisibled();
-    cy.wait(5000);
 
     Logger.stepNumber(8);
     Logger.stepDescription('Hacer Click en el botón Place Order');
     CartMethods.ClickOnPlaceOrderButton();
-    cy.wait(5000);
 
     Logger.stepNumber(9);
     Logger.stepDescription('Completar los campos obligatorios del modal de información de envio');
     PlaceOrderMethods.insertOrderInformation(PlaceOrderData.testData);
-    cy.wait(5000);
 
     Logger.stepNumber(10);
     Logger.stepDescription('Hacer click en el botón Purchase');
     PlaceOrderMethods.clickOnPurchaseButton();
-    cy.wait(5000);
 
     Logger.stepNumber(11);
     Logger.stepDescription('Verificar que se muestra un mensaje de confirmación y se redirige a la página de inicio');
     ThanksForYourPurcharseMethods.verifyCheckMarkIsDisplayed();
     ThanksForYourPurcharseMethods.clickOnOkButton();
     HomeMethods.verifyIndexURL();
-    cy.wait(5000);
   })
 })

@@ -18,9 +18,11 @@ export class CartMethods {
   }
 
   static emptyCart() {
+
+    cy.intercept('POST', 'https://api.www.demoblaze.com/deleteItem').as('deleteItem')
     cy.get('a[onclick^="deleteItem"]').each($delete => {
       $delete.click();
-      cy.wait(5000);
+      cy.wait('@deleteItem');
     });
   }
 }
